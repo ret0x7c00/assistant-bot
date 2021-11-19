@@ -5,9 +5,8 @@ name: duolinguo robot application
 
 on:
   push:
-    branches: [$default-branch]
-  pull_request:
-    branches: [$default-branch]
+    branches:
+      - main
   workflow_dispatch: # 手动触发
   schedule:
     # `分 时 天 月 周` 时按照标准时间 北京时间=标准时间+8 18表示北京时间早上2点
@@ -29,6 +28,6 @@ jobs:
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
       - name: Run the main procedure
         env:
-          AUTH_TOKEN: ${{ secrets.AUTH_TOKEN }}
+          DUOLINGO_AUTH_TOKEN: ${{ secrets.DUOLINGO_AUTH_TOKEN }}
         run: |
           python duolinguo-robot.py

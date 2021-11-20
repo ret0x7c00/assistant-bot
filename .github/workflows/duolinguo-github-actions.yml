@@ -29,5 +29,6 @@ jobs:
       - name: Run the main procedure
         env:
           DUOLINGO_AUTH_TOKEN: ${{ secrets.DUOLINGO_AUTH_TOKEN }}
+          BARK_AUTH_TOKEN: ${{ secrets.BARK_AUTH_TOKEN }}
         run: |
           python duolinguo-robot.py

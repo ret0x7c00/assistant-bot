@@ -5,6 +5,10 @@ import time
 from random import randrange
 import json
 import os
+from stopwatch import Stopwatch
+
+
+from barknotify import send_notify
 
 # auth token
 AUTH_TOKEN = os.environ.get('DUOLINGO_AUTH_TOKEN')
@@ -63,12 +67,16 @@ def put_answer(respJson):
 
 total_cnt = randrange(TOTAL_CNT_MIN, TOTAL_CNT_MAX)
 print("total count: %s" % (total_cnt))
+send_notify("begin to handle duolingo task. total count: %s" % (total_cnt))
+stopwatch = Stopwatch()
+stopwatch.start()
 
 for cnt in range(1, total_cnt):
     sleep_time = randrange(SLEEP_TIME_MIN, SLEEP_TIME_MAX)*60
 
     if AUTH_TOKEN is None:
         print("please set DUOLINGO_AUTH_TOKEN")
+        send_notify("please set DUOLINGO_AUTH_TOKEN")
         break
     print("the %s times is waiting for %ss" % (cnt, sleep_time))
     respJson = get_question()
@@ -77,3 +85,8 @@ for cnt in range(1, total_cnt):
     time.sleep(sleep_time)
     put_answer(respJson)
     time.sleep(randrange(10, 60))
+
+stopwatch.stop()
+print("total time: %s" % str(stopwatch))
+send_notify("duolingo task has finished. total count: %s, spent: %s" %
+            (total_cnt, str(stopwatch)))

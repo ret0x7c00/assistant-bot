@@ -67,7 +67,7 @@ def put_answer(respJson):
 
 total_cnt = randrange(TOTAL_CNT_MIN, TOTAL_CNT_MAX)
 print("total count: %s" % (total_cnt))
-send_notify("begin to handle duolingo task. total count: %s" % (total_cnt))
+send_notify("Duolinguo", "begin to handle duolingo task. total count: %s" % (total_cnt))
 stopwatch = Stopwatch()
 stopwatch.start()
 
@@ -76,7 +76,7 @@ for cnt in range(1, total_cnt):
 
     if AUTH_TOKEN is None:
         print("please set DUOLINGO_AUTH_TOKEN")
-        send_notify("please set DUOLINGO_AUTH_TOKEN")
+        send_notify("Duolinguo", "please set DUOLINGO_AUTH_TOKEN")
         break
     print("the %s times is waiting for %ss" % (cnt, sleep_time))
     respJson = get_question()
@@ -88,5 +88,5 @@ for cnt in range(1, total_cnt):
 
 stopwatch.stop()
 print("total time: %s" % str(stopwatch))
-send_notify("duolingo task has finished. total count: %s, spent: %s" %
+send_notify("Duolinguo", "duolingo task has finished. total count: %s, spent: %s" %
             (total_cnt, str(stopwatch)))

@@ -39,4 +39,10 @@ jobs:
           BARK_AUTH_TOKEN: ${{ secrets.BARK_AUTH_TOKEN }}
         run: |
           python heapdump-robot.py
-
+      - name: Run youyun main procedure
+        env:
+          HEAPDUMP_ACCOUNT: ${{ secrets.YOUYUN_ACCOUNT }}
+          HEAPDUMP_PASSWD: ${{ secrets.YOUYUN_PASSWD }}
+          BARK_AUTH_TOKEN: ${{ secrets.BARK_AUTH_TOKEN }}
+        run: |
+          python youyun-robot.py

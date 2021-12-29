@@ -67,7 +67,8 @@ def login():
     'accept-language': 'zh-CN,zh;q=0.9,en;q=0.8',
     }
     response = session.request("POST", url, headers=headers, data=payload)
-    print(response.text)
+    msg = response.content.decode('unicode_escape')
+    print(msg)
 
 def addSignin():
     import requests
@@ -93,8 +94,9 @@ def addSignin():
     }
 
     response = session.request("POST", url, headers=headers, data=payload)
-    print(response.text)
-    send_notify(NOTIFY_GROUP, response.text)
+    msg = response.content.decode('unicode_escape')
+    print(msg)
+    send_notify(NOTIFY_GROUP, msg)
 
 
 if ACCOUNT is None:

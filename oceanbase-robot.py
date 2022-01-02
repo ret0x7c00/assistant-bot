@@ -59,7 +59,7 @@ def addSignin():
     'sec-fetch-dest': 'empty',
     'referer': 'https://open.oceanbase.com/',
     'accept-language': 'en-US,en;q=0.9',
-    'cookie': "%s" % COOKIE
+    'cookie': COOKIE
     }
     response = session.request("POST", url, headers=headers, data=payload)
     print(response.text)

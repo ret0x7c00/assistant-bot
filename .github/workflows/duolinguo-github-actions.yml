@@ -46,9 +46,3 @@ jobs:
           BARK_AUTH_TOKEN: ${{ secrets.BARK_AUTH_TOKEN }}
         run: |
           python youyun-robot.py
-      - name: Run oceanbase main procedure
-        env:
-          OCEANBASE_COOKIE: ${{ secrets.OCEANBASE_COOKIE }}
-          BARK_AUTH_TOKEN: ${{ secrets.BARK_AUTH_TOKEN }}
-        run: |
-          python oceanbase-robot.py

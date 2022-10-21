@@ -32,6 +32,13 @@ jobs:
           BARK_AUTH_TOKEN: ${{ secrets.BARK_AUTH_TOKEN }}
         run: |
           python duolinguo-robot.py
+      - name: Run heapdump main procedure
+        env:
+          HEAPDUMP_ACCOUNT: ${{ secrets.HEAPDUMP_ACCOUNT }}
+          HEAPDUMP_PASSWD: ${{ secrets.HEAPDUMP_PASSWD }}
+          BARK_AUTH_TOKEN: ${{ secrets.BARK_AUTH_TOKEN }}
+        run: |
+          python heapdump-robot.py
       - name: Run youyun main procedure
         env:
           YOUYUN_ACCOUNT: ${{ secrets.YOUYUN_ACCOUNT }}
